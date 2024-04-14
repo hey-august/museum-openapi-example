@@ -13,6 +13,42 @@ info:
 servers:
   - url: "https://api.fake-museum-example.com/v1.1"
 paths:
+  /list-tokens:
+    get: 
+      summary: Get list of API tokens
+      description: Example description
+      operationId: listTokens
+      tags:
+        - API Keys
+      responses:
+        '200':
+          description: Success
+        '400': 
+          description: Bad Request
+  /generate-token:
+    post: 
+      summary: Create new API token
+      description: Generate a brand new API token.
+      operationId: createToken
+      tags:
+        - API Keys
+      responses:
+        '200':
+          description: Success
+        '400': 
+          description: Bad Request
+    /delete-token:
+    post: 
+      summary: Delete existing API token
+      description: Delete an existing API token.
+      operationId: deleteToken
+      tags:
+        - API Keys
+      responses:
+        '200':
+          description: Success
+        '400': 
+          description: Bad Request
   /museum-hours:
     get:
       summary: Get museum hours
@@ -70,7 +106,8 @@ paths:
           $ref: '#/components/responses/NotFound'
     get:
       summary: List special events
-      description: Return a list of upcoming special events at the museum.
+      description: Return a list of _upcoming_ special events at the museum.
+        See one you like? Use this API to [buy a ticket](/#tag/Tickets/operation/buyMuseumTickets).
       operationId: listSpecialEvents
       tags:
         - Events
